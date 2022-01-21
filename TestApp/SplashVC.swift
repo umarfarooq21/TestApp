@@ -17,6 +17,12 @@ class SplashVC: UIViewController {
     }
     
     func saveProductsDB(){
+        
+        
+        
+
+        
+        
         APIClient.GetProductsRequest { response, error, message in
             if response != nil {
                 

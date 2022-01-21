@@ -39,6 +39,28 @@ class APIClient: NSObject {
     
     static func GetProductsRequest( block: ((_ response: Json4Swift_Base?, _ error:Error?, _ message:String?) -> Void)?) {
         
+       
+        Alamofire.request("https://fakestoreapi.com/products", method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) -> Void in
+                    switch response.result {
+                    case .success:
+                        if let data = response.result.value as? Dictionary<String, AnyObject> {
+                            //self.array = data["contacts"] as! Array<Dictionary<String, AnyObject>>
+                        }
+        //                self.data = response.result.value as? [String, AnyObject]
+                        break
+                    case .failure:
+                        print("Error")
+                    }
+            
+            
+
+                }
+        
+        
+        
+        
+        
+        
         let window = UIApplication.shared.windows.first
         
         let hud = JGProgressHUD(style: .dark)
@@ -65,7 +87,8 @@ class APIClient: NSObject {
         
         print(param)
         
-        Alamofire.request(URL, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseObject { (response: DataResponse<Json4Swift_Base>) in
+        
+        Alamofire.request(URL, method: .post, parameters: nil, encoding: URLEncoding.default, headers: nil).responseObject { (response: DataResponse<Json4Swift_Base>) in
             //PKHUD.sharedHUD.hide()
             hud.dismiss(afterDelay: 0.0)
             
@@ -88,6 +111,7 @@ class APIClient: NSObject {
                     }else{
                         userObj = baseResponce
                     }*/
+                    userObj = baseResponce
                     
                 }else{
                     //message = baseResponce?.message!
